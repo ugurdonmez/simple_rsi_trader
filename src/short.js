@@ -1,10 +1,12 @@
 const { RestClientV5 } = require('bybit-api')
 const talib = require('talib')
+const axios = require('axios')
 
 const apiKey = ''
 const apiSecret = ''
 const ticker = "WLDUSDT"
 const size = 10
+const discordWebhookUrl = ""
 
 const bybit = new RestClientV5({
     key: apiKey,
@@ -13,29 +15,6 @@ const bybit = new RestClientV5({
 
 
 async function placeOrder() {
-
-    
-
-    // check positions
-
-    // if no position
-        // can we place order?
-            // yes - place order
-            // no - continue
-
-    // if position
-        // can we close the position?
-            // yes - close position
-            // no - continue
-        
-        // can we add more to the position?
-            // yes - add to position
-            // no - continue
-
-
-    // get position info for ticker by using api call 
-
-
     try {
 
         // get position info
@@ -49,12 +28,20 @@ async function placeOrder() {
         // get rsi value
         const rsiValue = await getRsiValue();
 
-        console.log('RSI:', rsiValue);
-        console.log('Position size:', positionSize);
+        const notificationMessage = [
+            '------------------',
+            `Time: ${new Date()}`,
+            `RSI: ${rsiValue}`,
+            `Position size: ${positionSize}`,
+        ].join('\n');
+
+        console.log(notificationMessage);
+        sendDiscordNotification(notificationMessage);
 
         // check close position
         if (positionSize > 0 && rsiValue < 30) {
             console.log('Close position');
+            sendDiscordNotification('Close position');
             // close position
             closePosition(positionSize);
         }
@@ -62,16 +49,19 @@ async function placeOrder() {
         // open new position
         if (positionSize === 0 && rsiValue > 70) {
             console.log('Open position');
+            sendDiscordNotification('Open position');
             addNewPosition();
         }
 
         // add to position
         if (positionSize > 0 && rsiValue > 70) {
             console.log('Add to position');
+            sendDiscordNotification('Add to position');
             // TODO: implement version 2;
         }
     } catch (error) {
         console.error('Error:', error);
+        sendDiscordNotification('Error: ' + error);
     }
 }
 
@@ -85,8 +75,10 @@ async function closePosition(positionSize) {
             qty: positionSize,
         });
         console.log(JSON.stringify(response));
+        sendDiscordNotification(JSON.stringify(response));
     } catch (error) {
         console.error('Error:', error);
+        sendDiscordNotification('Error: ' + error);
     }
 }
 
@@ -100,8 +92,10 @@ async function addNewPosition() {
             qty: '1',
         });
         console.log(JSON.stringify(response));
+        sendDiscordNotification(JSON.stringify(response));
     } catch (error) {
         console.error('Error:', error);
+        sendDiscordNotification('Error: ' + error);
     }
 }
 
@@ -130,6 +124,18 @@ async function getRsiValue() {
         return rsiArray[rsiArray.length - 1];
     } catch (error) {
         console.error('Error:', error);
+        sendDiscordNotification('Error: ' + error);
+    }
+}
+
+async function sendDiscordNotification(message) {
+    try {
+        await axios.post(discordWebhookUrl, {
+            content: message,
+        });
+        console.log('Notification sent to Discord.');
+    } catch (error) {
+        console.error('Failed to send notification to Discord:', error);
     }
 }
 
@@ -138,4 +144,3 @@ placeOrder();
 
 // Then run the function every 15 minutes
 setInterval(placeOrder, 15 * 60 * 1000);
-
