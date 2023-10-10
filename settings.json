@@ -1,0 +1,14 @@
+{
+    "trades": [
+        {
+            "ticker": "WLDUSDT",
+            "size": 10,
+            "maxSize": 31,
+        }, 
+        {
+            "ticker": "GPTUSDT",
+            "size": 1000,
+            "maxSize": 3001,
+        }
+    ],
+}
