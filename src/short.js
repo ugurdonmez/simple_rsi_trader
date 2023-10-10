@@ -1,12 +1,14 @@
 const { RestClientV5 } = require('bybit-api')
 const talib = require('talib')
 const axios = require('axios')
+require('dotenv').config();
 
-const apiKey = ''
-const apiSecret = ''
+
+const apiKey = process.env.apiKey
+const apiSecret = process.env.apiSecret
 const ticker = "WLDUSDT"
 const size = 10
-const discordWebhookUrl = ""
+const discordWebhookUrl = process.env.discordWebhookUrl
 
 const bybit = new RestClientV5({
     key: apiKey,
