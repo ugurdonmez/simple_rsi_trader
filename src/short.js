@@ -23,7 +23,7 @@ async function placeOrder() {
             symbol: ticker,
         });
 
-        const positionSize = positionInfo.result.list[0].size;
+        const positionSize = Number(positionInfo.result.list[0].size);
 
         // get rsi value
         const rsiValue = await getRsiValue();
@@ -47,10 +47,12 @@ async function placeOrder() {
         }
 
         // open new position
-        if (positionSize === 0 && rsiValue > 70) {
+        if (positionSize === 0 && rsiValue > 60) {
             console.log('Open position');
             sendDiscordNotification('Open position');
             addNewPosition();
+        } else {
+            console.log('No action');
         }
 
         // add to position
@@ -69,10 +71,10 @@ async function closePosition(positionSize) {
     try {
         const response = await bybit.submitOrder({
             category: 'linear',
-            symbol: 'WLDUSDT',
+            symbol: ticker,
             side: 'Buy',
             orderType: 'Market',
-            qty: positionSize,
+            qty: positionSize.toString(),
         });
         console.log(JSON.stringify(response));
         sendDiscordNotification(JSON.stringify(response));
@@ -86,10 +88,10 @@ async function addNewPosition() {
     try {
         const response = await bybit.submitOrder({
             category: 'linear',
-            symbol: 'WLDUSDT',
+            symbol: ticker,
             side: 'Sell',
             orderType: 'Market',
-            qty: '1',
+            qty: size.toString(),
         });
         console.log(JSON.stringify(response));
         sendDiscordNotification(JSON.stringify(response));
