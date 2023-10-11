@@ -2,14 +2,28 @@ const { RestClientV5 } = require('bybit-api')
 const talib = require('talib')
 const axios = require('axios')
 const winston = require('winston')
+const fs = require('fs')
+const path = require('path')
 require('dotenv').config()
 
 
 const apiKey = process.env.apiKey
 const apiSecret = process.env.apiSecret
-const ticker = "WLDUSDT"
-const size = 10
+// const ticker = "WLDUSDT"
+// const size = 10
 const discordWebhookUrl = process.env.discordWebhookUrl
+
+// read setting file which located in the parent folder
+let settings
+try {
+    const settingsPath = path.resolve(__dirname, '../settings.json')
+    const rawData = fs.readFileSync(settingsPath)
+    settings = JSON.parse(rawData)
+} catch (error) {
+    console.error('Error reading settings.json:', error)
+    return
+}
+
 
 const bybit = new RestClientV5({
     key: apiKey,
@@ -33,23 +47,23 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-
-async function placeOrder() {
+async function placeOrder(trade) {
     try {
         // get position info
         const positionInfo = await bybit.getPositionInfo({
             category: 'linear',
-            symbol: ticker,
+            symbol: trade.ticker,
         })
 
         const positionSize = Number(positionInfo.result.list[0].size)
         const unrealisedPnl = Number(positionInfo.result.list[0].unrealisedPnl)
 
         // get rsi value
-        const rsiValue = await getRsiValue()
+        const rsiValue = await getRsiValue(trade.ticker)
 
         const notificationMessage = [
             '------------------',
+            `Ticker: ${trade.ticker}`,
             `Time: ${new Date()}`,
             `RSI: ${rsiValue}`,
             `Position size: ${positionSize}`,
@@ -70,16 +84,14 @@ async function placeOrder() {
         if (positionSize === 0 && rsiValue > 60) {
             logger.info('Open position')
             sendDiscordNotification('Open position')
-            addNewPosition()
-        } else {
-            console.log('No action')
+            addNewPosition(trade.size)
         }
 
         // add to position
-        if (positionSize > 0 && rsiValue > 70) {
+        if (positionSize > 0 && rsiValue > 70 && positionSize < trade.maxSize) {
             logger.info('Add to position')
             sendDiscordNotification('Add to position');
-            // TODO: implement version 2;
+            addNewPosition(trade.size)
         }
     } catch (error) {
         logger.error('Error:', error)
@@ -104,7 +116,7 @@ async function closePosition(positionSize) {
     }
 }
 
-async function addNewPosition() {
+async function addNewPosition(size) {
     try {
         const response = await bybit.submitOrder({
             category: 'linear',
@@ -121,7 +133,7 @@ async function addNewPosition() {
     }
 }
 
-async function getRsiValue() {
+async function getRsiValue(ticker) {
     try {
         const candles = await bybit.getKline({
             symbol: ticker,
@@ -161,8 +173,14 @@ async function sendDiscordNotification(message) {
     }
 }
 
+settings.trades.forEach(trade => {
+    placeOrder(trade);
+    setInterval(() => placeOrder(trade), 5 * 60 * 1000);
+});
+
+
 // Run the function immediately when the script starts
-placeOrder();
+// placeOrder();
 
 // Then run the function every 15 minutes
-setInterval(placeOrder, 15 * 60 * 1000);
+// setInterval(placeOrder, 15 * 60 * 1000);
