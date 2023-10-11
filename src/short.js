@@ -43,6 +43,7 @@ async function placeOrder() {
         })
 
         const positionSize = Number(positionInfo.result.list[0].size)
+        const unrealisedPnl = Number(positionInfo.result.list[0].unrealisedPnl)
 
         // get rsi value
         const rsiValue = await getRsiValue()
@@ -58,7 +59,7 @@ async function placeOrder() {
         sendDiscordNotification(notificationMessage)
 
         // check close position
-        if (positionSize > 0 && rsiValue < 30) {
+        if (positionSize > 0 && rsiValue < 30 && unrealisedPnl > 0) {
             logger.info('Close position')
             sendDiscordNotification('Close position')
             // close position
