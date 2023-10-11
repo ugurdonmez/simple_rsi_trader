@@ -1,7 +1,8 @@
 const { RestClientV5 } = require('bybit-api')
 const talib = require('talib')
 const axios = require('axios')
-require('dotenv').config();
+const winston = require('winston')
+require('dotenv').config()
 
 
 const apiKey = process.env.apiKey
@@ -13,59 +14,75 @@ const discordWebhookUrl = process.env.discordWebhookUrl
 const bybit = new RestClientV5({
     key: apiKey,
     secret: apiSecret,
+})
+
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.json(),
+    defaultMeta: { service: 'user-service' },
+    transports: [
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'combined.log' }),
+    ],
 });
+
+if (process.env.NODE_ENV !== 'production') {
+    logger.add(new winston.transports.Console({
+        format: winston.format.simple(),
+    }))
+}
+
 
 
 async function placeOrder() {
     try {
-
         // get position info
         const positionInfo = await bybit.getPositionInfo({
             category: 'linear',
             symbol: ticker,
-        });
+        })
 
-        const positionSize = Number(positionInfo.result.list[0].size);
+        const positionSize = Number(positionInfo.result.list[0].size)
 
         // get rsi value
-        const rsiValue = await getRsiValue();
+        const rsiValue = await getRsiValue()
 
         const notificationMessage = [
             '------------------',
             `Time: ${new Date()}`,
             `RSI: ${rsiValue}`,
             `Position size: ${positionSize}`,
-        ].join('\n');
+        ].join('\n')
 
-        console.log(notificationMessage);
-        sendDiscordNotification(notificationMessage);
+        logger.info(notificationMessage)
+        sendDiscordNotification(notificationMessage)
 
         // check close position
         if (positionSize > 0 && rsiValue < 30) {
-            console.log('Close position');
-            sendDiscordNotification('Close position');
+            logger.info('Close position')
+            sendDiscordNotification('Close position')
             // close position
             closePosition(positionSize);
         }
 
         // open new position
         if (positionSize === 0 && rsiValue > 60) {
-            console.log('Open position');
-            sendDiscordNotification('Open position');
-            addNewPosition();
+            logger.info('Open position')
+            sendDiscordNotification('Open position')
+            addNewPosition()
         } else {
-            console.log('No action');
+            console.log('No action')
         }
 
         // add to position
         if (positionSize > 0 && rsiValue > 70) {
-            console.log('Add to position');
+            logger.info('Add to position')
             sendDiscordNotification('Add to position');
             // TODO: implement version 2;
         }
     } catch (error) {
-        console.error('Error:', error);
-        sendDiscordNotification('Error: ' + error);
+        logger.error('Error:', error)
+        sendDiscordNotification('Error: ' + error)
     }
 }
 
@@ -77,12 +94,12 @@ async function closePosition(positionSize) {
             side: 'Buy',
             orderType: 'Market',
             qty: positionSize.toString(),
-        });
-        console.log(JSON.stringify(response));
-        sendDiscordNotification(JSON.stringify(response));
+        })
+        logger.info(JSON.stringify(response))
+        sendDiscordNotification(JSON.stringify(response))
     } catch (error) {
-        console.error('Error:', error);
-        sendDiscordNotification('Error: ' + error);
+        logger.error('Error:', error)
+        sendDiscordNotification('Error: ' + error)
     }
 }
 
@@ -94,12 +111,12 @@ async function addNewPosition() {
             side: 'Sell',
             orderType: 'Market',
             qty: size.toString(),
-        });
-        console.log(JSON.stringify(response));
-        sendDiscordNotification(JSON.stringify(response));
+        })
+        logger.info(JSON.stringify(response))
+        sendDiscordNotification(JSON.stringify(response))
     } catch (error) {
-        console.error('Error:', error);
-        sendDiscordNotification('Error: ' + error);
+        logger.error('Error:', error)
+        sendDiscordNotification('Error: ' + error)
     }
 }
 
@@ -109,11 +126,11 @@ async function getRsiValue() {
             symbol: ticker,
             interval: '15',
             limit: 100,
-        });
+        })
 
-        const closePrices = candles.result.list.map(candle => parseFloat(candle[4]));
+        const closePrices = candles.result.list.map(candle => parseFloat(candle[4]))
 
-        const reversed = closePrices.reverse();
+        const reversed = closePrices.reverse()
 
         const result = talib.execute({
             name: 'RSI',
@@ -121,14 +138,14 @@ async function getRsiValue() {
             endIdx: reversed.length - 1,
             inReal: reversed,
             optInTimePeriod: 14,
-        });
+        })
 
-        rsiArray = result.result.outReal;
+        rsiArray = result.result.outReal
 
-        return rsiArray[rsiArray.length - 1];
+        return rsiArray[rsiArray.length - 1]
     } catch (error) {
-        console.error('Error:', error);
-        sendDiscordNotification('Error: ' + error);
+        logger.error('Error:', error)
+        sendDiscordNotification('Error: ' + error)
     }
 }
 
@@ -137,9 +154,9 @@ async function sendDiscordNotification(message) {
         await axios.post(discordWebhookUrl, {
             content: message,
         });
-        console.log('Notification sent to Discord.');
+        logger.info('Sent notification to Discord')
     } catch (error) {
-        console.error('Failed to send notification to Discord:', error);
+        logger.error('Error:', error)
     }
 }
 
