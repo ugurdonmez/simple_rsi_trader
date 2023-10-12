@@ -73,7 +73,7 @@ async function placeOrder(trade) {
         // check close position
         if (positionSize > 0 && rsiValue < 30 && unrealisedPnl > 0) {
             logger.info('Close position')
-            sendDiscordNotification('Close position')
+            sendDiscordNotification(ticker + 'Close position')
             // close position
             closePosition(trade.ticker, positionSize);
         }
@@ -81,19 +81,19 @@ async function placeOrder(trade) {
         // open new position
         if (positionSize === 0 && rsiValue > 60) {
             logger.info('Open position')
-            sendDiscordNotification('Open position')
+            sendDiscordNotification(ticker + 'Open position')
             addNewPosition(trade.ticker, trade.size)
         }
 
         // add to position
         if (positionSize > 0 && rsiValue > 70 && positionSize < trade.maxSize) {
             logger.info('Add to position')
-            sendDiscordNotification('Add to position');
+            sendDiscordNotification(ticker + ' Add to position');
             addNewPosition(trade.ticker, trade.size)
         }
     } catch (error) {
         logger.error('Error:', error)
-        sendDiscordNotification('Error: ' + error)
+        sendDiscordNotification('Error: place order ' + error)
     }
 }
 
@@ -107,10 +107,10 @@ async function closePosition(ticker, positionSize) {
             qty: positionSize.toString(),
         })
         logger.info(JSON.stringify(response))
-        sendDiscordNotification(JSON.stringify(response))
+        sendDiscordNotification(ticker + ' closePosition ' + JSON.stringify(response))
     } catch (error) {
         logger.error('Error:', error)
-        sendDiscordNotification('Error: ' + error)
+        sendDiscordNotification('Error:' + ' closePosition ' +  + error)
     }
 }
 
@@ -124,10 +124,10 @@ async function addNewPosition(ticker, size) {
             qty: size.toString(),
         })
         logger.info(JSON.stringify(response))
-        sendDiscordNotification(JSON.stringify(response))
+        sendDiscordNotification(ticker + ' addNewPosition ' + JSON.stringify(response))
     } catch (error) {
         logger.error('Error:', error)
-        sendDiscordNotification('Error: ' + error)
+        sendDiscordNotification('Error:' + ' addNewPosition ' +  + error)
     }
 }
 
