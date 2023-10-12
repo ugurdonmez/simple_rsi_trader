@@ -9,8 +9,6 @@ require('dotenv').config()
 
 const apiKey = process.env.apiKey
 const apiSecret = process.env.apiSecret
-// const ticker = "WLDUSDT"
-// const size = 10
 const discordWebhookUrl = process.env.discordWebhookUrl
 
 // read setting file which located in the parent folder
@@ -84,14 +82,14 @@ async function placeOrder(trade) {
         if (positionSize === 0 && rsiValue > 60) {
             logger.info('Open position')
             sendDiscordNotification('Open position')
-            addNewPosition(trade.size)
+            addNewPosition(trade.ticker, trade.size)
         }
 
         // add to position
         if (positionSize > 0 && rsiValue > 70 && positionSize < trade.maxSize) {
             logger.info('Add to position')
             sendDiscordNotification('Add to position');
-            addNewPosition(trade.size)
+            addNewPosition(trade.ticker, trade.size)
         }
     } catch (error) {
         logger.error('Error:', error)
@@ -116,7 +114,7 @@ async function closePosition(positionSize) {
     }
 }
 
-async function addNewPosition(size) {
+async function addNewPosition(ticker, size) {
     try {
         const response = await bybit.submitOrder({
             category: 'linear',
