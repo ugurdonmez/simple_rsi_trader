@@ -75,7 +75,7 @@ async function placeOrder(trade) {
             logger.info('Close position')
             sendDiscordNotification('Close position')
             // close position
-            closePosition(positionSize);
+            closePosition(trade.ticker, positionSize);
         }
 
         // open new position
@@ -97,7 +97,7 @@ async function placeOrder(trade) {
     }
 }
 
-async function closePosition(positionSize) {
+async function closePosition(ticker, positionSize) {
     try {
         const response = await bybit.submitOrder({
             category: 'linear',
