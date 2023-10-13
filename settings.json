@@ -9,6 +9,11 @@
             "ticker": "GPTUSDT",
             "size": 2000,
             "maxSize": 6001
+        },
+        {
+            "ticker": "BIGTIMEUSDT",
+            "size": 30,
+            "maxSize": 121
         }
     ]
 }
