@@ -3,12 +3,12 @@
         {
             "ticker": "WLDUSDT",
             "size": 10,
-            "maxSize": 31
+            "maxSize": 51
         }, 
         {
             "ticker": "GPTUSDT",
-            "size": 1000,
-            "maxSize": 3001
+            "size": 2000,
+            "maxSize": 6001
         }
     ]
 }
