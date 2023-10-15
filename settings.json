@@ -3,17 +3,32 @@
         {
             "ticker": "WLDUSDT",
             "size": 10,
-            "maxSize": 51
+            "maxSize": 51,
+            "exchange": "bybit"
         }, 
         {
             "ticker": "GPTUSDT",
             "size": 2000,
-            "maxSize": 6001
+            "maxSize": 6001,
+            "exchange": "bybit"
         },
         {
             "ticker": "BIGTIMEUSDT",
             "size": 30,
-            "maxSize": 121
+            "maxSize": 121,
+            "exchange": "bybit"
+        },
+        {
+            "ticker": "WSMUSDT",
+            "size": 50,
+            "maxSize": 301,
+            "exchange": "bybit"
+        },
+        {
+            "ticker": "PEPECOMMUNITYUSDT",
+            "size": 30,
+            "maxSize": 121,
+            "exchange": "mexc"
         }
     ]
 }

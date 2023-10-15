@@ -46,6 +46,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 async function placeOrder(trade) {
+
+    if (trade.exchange !== 'bybit') {
+        return
+    }
+
     try {
         // get position info
         const positionInfo = await bybit.getPositionInfo({
