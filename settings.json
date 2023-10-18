@@ -25,6 +25,12 @@
             "exchange": "bybit"
         },
         {
+            "ticker": "MULTIUSDT",
+            "size": 2,
+            "maxSize": 5,
+            "exchange": "bybit"
+        },
+        {
             "ticker": "PEPECOMMUNITYUSDT",
             "size": 30,
             "maxSize": 121,
