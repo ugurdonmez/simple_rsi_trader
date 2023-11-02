@@ -47,6 +47,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 async function placeOrder(trade) {
 
+    console.log(JSON.stringify(trade) + "testing")
+
     if (trade.exchange !== 'bybit') {
         return
     }
@@ -170,9 +172,9 @@ async function sendDiscordNotification(message) {
         await axios.post(discordWebhookUrl, {
             content: message,
         });
-        logger.info('Sent notification to Discord')
+        logger.info('Sent notification to Discord ' + message)
     } catch (error) {
-        logger.error('Error:', error)
+        logger.error('Error:', error + ' ' + message)
     }
 }
 

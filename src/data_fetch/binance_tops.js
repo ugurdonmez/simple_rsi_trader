@@ -39,5 +39,5 @@ const fetchAndSaveGainers = async () => {
 fetchAndSaveGainers();
 
 // Set an interval to run the function daily (in milliseconds)
-const intervalInMilliseconds = 24 * 60 * 60 * 1000; // 24 hours
+const intervalInMilliseconds = 5 * 60 * 1000; // 24 hours
 setInterval(fetchAndSaveGainers, intervalInMilliseconds);
