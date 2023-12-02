@@ -75,7 +75,8 @@ async function placeOrder(trade) {
             `Ticker: ${trade.ticker}`,
             `Time: ${new Date()}`,
             `RSI: ${rsiValue}`,
-            `Position size: ${positionSize}`,
+            `Position size: ${positionSize}`
+            `Side: ${trade.side}`,
         ].join('\n')
 
         logger.info(notificationMessage)
@@ -84,7 +85,7 @@ async function placeOrder(trade) {
         // check close position
         if (positionSize > 0 && rsiValue > 70 && unrealisedPnl > 0) {
             logger.info('Close position')
-            sendDiscordNotification(trade.ticker + 'Close position')
+            sendDiscordNotification(trade.ticker + 'Close position ' + trade.side)
             // close position
             closePosition(trade.ticker, positionSize);
         }
@@ -92,14 +93,14 @@ async function placeOrder(trade) {
         // open new position
         if (positionSize === 0 && rsiValue < 40) {
             logger.info('Open position')
-            sendDiscordNotification(trade.ticker + 'Open position')
+            sendDiscordNotification(trade.ticker + 'Open position ' + trade.side)
             addNewPosition(trade.ticker, trade.size)
         }
 
         // add to position
         if (positionSize > 0 && rsiValue < 30 && positionSize < trade.maxSize) {
             logger.info('Add to position')
-            sendDiscordNotification(trade.ticker + ' Add to position');
+            sendDiscordNotification(trade.ticker + ' Add to position' + trade.side)
             addNewPosition(trade.ticker, trade.size)
         }
     } catch (error) {
