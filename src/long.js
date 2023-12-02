@@ -75,7 +75,7 @@ async function placeOrder(trade) {
             `Ticker: ${trade.ticker}`,
             `Time: ${new Date()}`,
             `RSI: ${rsiValue}`,
-            `Position size: ${positionSize}`
+            `Position size: ${positionSize}`,
             `Side: ${trade.side}`,
         ].join('\n')
 
