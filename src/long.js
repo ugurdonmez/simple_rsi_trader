@@ -14,7 +14,7 @@ const discordWebhookUrl = process.env.discordWebhookUrl
 // read setting file which located in the parent folder
 let settings
 try {
-    const settingsPath = path.resolve(__dirname, '../settings.json')
+    const settingsPath = path.resolve(__dirname, '../settings_long.json')
     const rawData = fs.readFileSync(settingsPath)
     settings = JSON.parse(rawData)
 } catch (error) {
