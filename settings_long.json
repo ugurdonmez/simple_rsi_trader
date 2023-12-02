@@ -1,0 +1,25 @@
+{
+    "trades": [
+        {
+            "ticker": "ORDIUSDT",
+            "size": 1,
+            "maxSize": 3,
+            "exchange": "bybit",
+            "position": "long"
+        }, 
+        {
+            "ticker": "TIAUSDT",
+            "size": 1,
+            "maxSize": 3,
+            "exchange": "bybit",
+            "position": "long"
+        },
+        {
+            "ticker": "BIGTIMEUSDT",
+            "size": 30,
+            "maxSize": 121,
+            "exchange": "bybit",
+            "position": "long"
+        }
+    ]
+}
