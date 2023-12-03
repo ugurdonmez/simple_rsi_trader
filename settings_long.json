@@ -20,6 +20,34 @@
             "maxSize": 121,
             "exchange": "bybit",
             "side": "long"
+        },
+        {
+            "ticker": "INJUSDT",
+            "size": 1,
+            "maxSize": 3,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "USTCUSDT",
+            "size": 100,
+            "maxSize": 301,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "FETUSDT",
+            "size": 5,
+            "maxSize": 16,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "AGIXUSDT",
+            "size": 10,
+            "maxSize": 31,
+            "exchange": "bybit",
+            "side": "long"
         }
     ]
 }
