@@ -2,8 +2,8 @@
     "trades": [
         {
             "ticker": "ORDIUSDT",
-            "size": 1,
-            "maxSize": 3,
+            "size": 0.2,
+            "maxSize": 1,
             "exchange": "bybit",
             "side": "long"
         }, 
