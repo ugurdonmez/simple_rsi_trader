@@ -15,23 +15,9 @@
             "side": "long"
         },
         {
-            "ticker": "BIGTIMEUSDT",
-            "size": 30,
-            "maxSize": 121,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
             "ticker": "INJUSDT",
             "size": 0.5,
             "maxSize": 2,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "USTCUSDT",
-            "size": 100,
-            "maxSize": 301,
             "exchange": "bybit",
             "side": "long"
         },
