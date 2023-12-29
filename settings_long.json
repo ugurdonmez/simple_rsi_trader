@@ -16,8 +16,8 @@
         },
         {
             "ticker": "BIGTIMEUSDT",
-            "size": 30,
-            "maxSize": 121,
+            "size": 20,
+            "maxSize": 50,
             "exchange": "bybit",
             "side": "long"
         },
@@ -51,8 +51,8 @@
         },
         {
             "ticker": "MNTUSDT",
-            "size": 2,
-            "maxSize": 15,
+            "size": 4,
+            "maxSize": 50,
             "exchange": "bybit",
             "side": "long"
         },
@@ -65,8 +65,8 @@
         },
         {
             "ticker": "ETCUSDT",
-            "size": 0.2,
-            "maxSize": 1,
+            "size": 1,
+            "maxSize": 10,
             "exchange": "bybit",
             "side": "long"
         }
