@@ -69,6 +69,27 @@
             "maxSize": 5,
             "exchange": "bybit",
             "side": "long"
+        },
+        {
+            "ticker": "XAIUSDT",
+            "size": 1,
+            "maxSize": 11,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "DYMUSDT",
+            "size": 0.4,
+            "maxSize": 3,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "PYTHUSDT",
+            "size": 3,
+            "maxSize": 22,
+            "exchange": "bybit",
+            "side": "long"
         }
     ]
 }
