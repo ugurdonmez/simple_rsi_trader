@@ -90,6 +90,34 @@
             "maxSize": 22,
             "exchange": "bybit",
             "side": "long"
+        },
+        {
+            "ticker": "PIXELUSDT",
+            "size": 3,
+            "maxSize": 22,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "SHIB1000USDT",
+            "size": 20,
+            "maxSize": 250,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "SHIB1000USDT",
+            "size": 20,
+            "maxSize": 250,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "ADAUSDT",
+            "size": 3,
+            "maxSize": 15,
+            "exchange": "bybit",
+            "side": "long"
         }
     ]
 }
