@@ -93,22 +93,36 @@
         },
         {
             "ticker": "PIXELUSDT",
-            "size": 3,
-            "maxSize": 22,
+            "size": 5,
+            "maxSize": 35,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "SHIB1000USDT",
-            "size": 20,
-            "maxSize": 250,
+            "size": 50,
+            "maxSize": 1000,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "ADAUSDT",
-            "size": 3,
-            "maxSize": 15,
+            "size": 6,
+            "maxSize": 30,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "DOTUSDT",
+            "size": 1,
+            "maxSize": 6,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "AVAXUSDT",
+            "size": 0.2,
+            "maxSize": 2,
             "exchange": "bybit",
             "side": "long"
         }
