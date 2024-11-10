@@ -15,13 +15,6 @@
             "side": "long"
         },
         {
-            "ticker": "BIGTIMEUSDT",
-            "size": 20,
-            "maxSize": 50,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
             "ticker": "INJUSDT",
             "size": 0.5,
             "maxSize": 2,
@@ -29,7 +22,7 @@
             "side": "long"
         },
         {
-            "ticker": "USTCUSDT",
+            "ticker": "SUIUSDT",
             "size": 100,
             "maxSize": 301,
             "exchange": "bybit",
@@ -57,30 +50,16 @@
             "side": "long"
         },
         {
-            "ticker": "APEUSDT",
+            "ticker": "NOTUSDT",
             "size": 2,
             "maxSize": 10,
             "exchange": "bybit",
             "side": "long"
         },
         {
-            "ticker": "ETCUSDT",
+            "ticker": "SOLUSDT",
             "size": 1,
             "maxSize": 5,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "XAIUSDT",
-            "size": 1,
-            "maxSize": 11,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "DYMUSDT",
-            "size": 0.4,
-            "maxSize": 3,
             "exchange": "bybit",
             "side": "long"
         },
@@ -88,41 +67,6 @@
             "ticker": "PYTHUSDT",
             "size": 3,
             "maxSize": 22,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "PIXELUSDT",
-            "size": 5,
-            "maxSize": 35,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "SHIB1000USDT",
-            "size": 50,
-            "maxSize": 1000,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "ADAUSDT",
-            "size": 6,
-            "maxSize": 30,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "DOTUSDT",
-            "size": 1,
-            "maxSize": 6,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "AVAXUSDT",
-            "size": 0.2,
-            "maxSize": 2,
             "exchange": "bybit",
             "side": "long"
         }

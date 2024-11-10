@@ -1,9 +1,9 @@
 const { RestClientV5 } = require('bybit-api')
-const talib = require('talib')
 const axios = require('axios')
 const winston = require('winston')
 const fs = require('fs')
 const path = require('path')
+const { RSI } = require('technicalindicators')
 require('dotenv').config()
 
 
@@ -153,17 +153,7 @@ async function getRsiValue(ticker) {
 
         const closePrices = candles.result.list.map(candle => parseFloat(candle[4]))
 
-        const reversed = closePrices.reverse()
-
-        const result = talib.execute({
-            name: 'RSI',
-            startIdx: 0,
-            endIdx: reversed.length - 1,
-            inReal: reversed,
-            optInTimePeriod: 14,
-        })
-
-        rsiArray = result.result.outReal
+        const rsiArray = RSI.calculate({ values: closePrices.reverse(), period: 14 })
 
         return rsiArray[rsiArray.length - 1]
     } catch (error) {
@@ -171,6 +161,7 @@ async function getRsiValue(ticker) {
         sendDiscordNotification('Error: ' + error)
     }
 }
+
 
 async function sendDiscordNotification(message) {
     try {
