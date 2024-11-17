@@ -23,8 +23,8 @@
         },
         {
             "ticker": "SUIUSDT",
-            "size": 100,
-            "maxSize": 301,
+            "size": 25,
+            "maxSize": 226,
             "exchange": "bybit",
             "side": "long"
         },
@@ -43,23 +43,9 @@
             "side": "long"
         },
         {
-            "ticker": "MNTUSDT",
-            "size": 4,
-            "maxSize": 50,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "NOTUSDT",
-            "size": 2,
-            "maxSize": 10,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
             "ticker": "SOLUSDT",
-            "size": 1,
-            "maxSize": 5,
+            "size": 0.1,
+            "maxSize": 2,
             "exchange": "bybit",
             "side": "long"
         },
@@ -67,6 +53,27 @@
             "ticker": "PYTHUSDT",
             "size": 3,
             "maxSize": 22,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "1000FLOKIUSDT",
+            "size": 50,
+            "maxSize": 251,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "1000BONKUSDT",
+            "size": 500,
+            "maxSize": 2501,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "NEARUSDT",
+            "size": 2,
+            "maxSize": 13,
             "exchange": "bybit",
             "side": "long"
         }
