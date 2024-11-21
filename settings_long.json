@@ -23,8 +23,8 @@
         },
         {
             "ticker": "SUIUSDT",
-            "size": 25,
-            "maxSize": 226,
+            "size": 10,
+            "maxSize": 151,
             "exchange": "bybit",
             "side": "long"
         },
@@ -74,6 +74,27 @@
             "ticker": "NEARUSDT",
             "size": 2,
             "maxSize": 13,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "ETHFIUSDT",
+            "size": 5,
+            "maxSize": 41,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "STRKUSDT",
+            "size": 5,
+            "maxSize": 41,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "SEIUSDT",
+            "size": 5,
+            "maxSize": 41,
             "exchange": "bybit",
             "side": "long"
         }
