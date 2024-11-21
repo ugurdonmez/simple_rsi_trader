@@ -10,7 +10,7 @@
         {
             "ticker": "TIAUSDT",
             "size": 0.5,
-            "maxSize": 2,
+            "maxSize": 5,
             "exchange": "bybit",
             "side": "long"
         },
@@ -29,20 +29,6 @@
             "side": "long"
         },
         {
-            "ticker": "FETUSDT",
-            "size": 10,
-            "maxSize": 41,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "AGIXUSDT",
-            "size": 20,
-            "maxSize": 51,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
             "ticker": "SOLUSDT",
             "size": 0.1,
             "maxSize": 2,
@@ -51,8 +37,8 @@
         },
         {
             "ticker": "PYTHUSDT",
-            "size": 3,
-            "maxSize": 22,
+            "size": 5,
+            "maxSize": 31,
             "exchange": "bybit",
             "side": "long"
         },
