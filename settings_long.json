@@ -24,21 +24,21 @@
         {
             "ticker": "SUIUSDT",
             "size": 10,
-            "maxSize": 151,
+            "maxSize": 101,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "SOLUSDT",
             "size": 0.1,
-            "maxSize": 2,
+            "maxSize": 1.2,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "PYTHUSDT",
-            "size": 5,
-            "maxSize": 31,
+            "size": 10,
+            "maxSize": 101,
             "exchange": "bybit",
             "side": "long"
         },
@@ -72,15 +72,29 @@
         },
         {
             "ticker": "STRKUSDT",
-            "size": 5,
-            "maxSize": 41,
+            "size": 10,
+            "maxSize": 101,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "SEIUSDT",
-            "size": 5,
-            "maxSize": 41,
+            "size": 10,
+            "maxSize": 101,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "XTZUSDT",
+            "size": 10,
+            "maxSize": 61,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "JASMYUSDT",
+            "size": 200,
+            "maxSize": 1001,
             "exchange": "bybit",
             "side": "long"
         }
