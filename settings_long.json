@@ -93,8 +93,22 @@
         },
         {
             "ticker": "JASMYUSDT",
-            "size": 200,
-            "maxSize": 1001,
+            "size": 300,
+            "maxSize": 2001,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "HBARUSDT",
+            "size": 300,
+            "maxSize": 2001,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "IOTAUSDT",
+            "size": 20,
+            "maxSize": 161,
             "exchange": "bybit",
             "side": "long"
         }
