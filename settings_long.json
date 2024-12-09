@@ -2,113 +2,113 @@
     "trades": [
         {
             "ticker": "ORDIUSDT",
-            "size": 0.2,
-            "maxSize": 1,
+            "size": 0.1,
+            "maxSize": 0.8,
             "exchange": "bybit",
             "side": "long"
         }, 
         {
             "ticker": "TIAUSDT",
-            "size": 0.5,
-            "maxSize": 5,
+            "size": 0.2,
+            "maxSize": 3,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "INJUSDT",
-            "size": 0.5,
-            "maxSize": 2,
+            "size": 0.2,
+            "maxSize": 1,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "SUIUSDT",
-            "size": 10,
-            "maxSize": 101,
+            "size": 3,
+            "maxSize": 46,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "SOLUSDT",
-            "size": 0.1,
-            "maxSize": 1.2,
+            "size": 0.05,
+            "maxSize": 0.8,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "PYTHUSDT",
-            "size": 10,
-            "maxSize": 101,
+            "size": 5,
+            "maxSize": 51,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "1000FLOKIUSDT",
-            "size": 50,
-            "maxSize": 251,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "1000BONKUSDT",
-            "size": 500,
-            "maxSize": 2501,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "NEARUSDT",
-            "size": 2,
-            "maxSize": 13,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "ETHFIUSDT",
-            "size": 5,
-            "maxSize": 41,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "STRKUSDT",
-            "size": 10,
-            "maxSize": 101,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "SEIUSDT",
-            "size": 10,
-            "maxSize": 101,
-            "exchange": "bybit",
-            "side": "long"
-        },
-        {
-            "ticker": "XTZUSDT",
             "size": 10,
             "maxSize": 61,
             "exchange": "bybit",
             "side": "long"
         },
         {
+            "ticker": "1000BONKUSDT",
+            "size": 100,
+            "maxSize": 1501,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "NEARUSDT",
+            "size": 1,
+            "maxSize": 7,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "ETHFIUSDT",
+            "size": 1,
+            "maxSize": 12,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "STRKUSDT",
+            "size": 5,
+            "maxSize": 51,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "SEIUSDT",
+            "size": 5,
+            "maxSize": 51,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "XTZUSDT",
+            "size": 3,
+            "maxSize": 31,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
             "ticker": "JASMYUSDT",
-            "size": 300,
-            "maxSize": 2001,
+            "size": 100,
+            "maxSize": 901,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "HBARUSDT",
-            "size": 300,
-            "maxSize": 2001,
+            "size": 100,
+            "maxSize": 801,
             "exchange": "bybit",
             "side": "long"
         },
         {
             "ticker": "IOTAUSDT",
-            "size": 20,
-            "maxSize": 161,
+            "size": 5,
+            "maxSize": 71,
             "exchange": "bybit",
             "side": "long"
         }
