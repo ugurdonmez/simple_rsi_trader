@@ -111,6 +111,27 @@
             "maxSize": 41,
             "exchange": "bybit",
             "side": "long"
+        },
+        {
+            "ticker": "MOVEUSDT",
+            "size": 5,
+            "maxSize": 56,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "USUALUSDT",
+            "size": 4,
+            "maxSize": 31,
+            "exchange": "bybit",
+            "side": "long"
+        },
+        {
+            "ticker": "ENAUSDT",
+            "size": 2,
+            "maxSize": 31,
+            "exchange": "bybit",
+            "side": "long"
         }
     ]
 }
